@@ -27,6 +27,7 @@ Route::prefix("v1")->group(function () {
     Route::get("/requirement", RequirementController::class . "@generateRequirement");
     Route::get("/schema", RequirementController::class . "@generateSchema");
 
+    Route::get("projects/{id}", ProjectController::class . "@select");
     Route::resource("projects", ProjectController::class);
     Route::post("projects/{id}/build", ProjectController::class . "@generateRequirement");
     Route::post("projects/{id}/schema", ProjectController::class . "@generateSchema");

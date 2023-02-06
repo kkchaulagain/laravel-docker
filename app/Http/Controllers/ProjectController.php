@@ -101,4 +101,23 @@ class ProjectController extends BaseController
             return $this->handleError($e);
         }
     }
+
+    public function select($id)
+    {
+        try {
+            $project = $this->service->find($id);
+            $build = (new BuildService())->filterArray([
+                'project_id' => $id,
+                'status' => 0
+            ])->latest()->first();
+            if (!$build) {
+                throw new \Exception("Build not found", 404);
+            }
+            $project['build'] = $build;
+            return $this->successResponse($project);
+        } catch (\Exception $e) {
+            dd($e);
+            return $this->handleError($e);
+        }
+    }
 }
