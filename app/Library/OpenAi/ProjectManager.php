@@ -11,7 +11,7 @@ class ProjectManager
     public $configuration = [
         'temperature' => 0.7,
         // 'model' => 'code-davinci-002',
-        'model' => 'curie:ft-personal-2023-01-30-08-47-37',
+        'model' => 'curie:ft-personal-2023-02-01-07-22-36',
         'max_tokens' => 200,
         'top_p' => 1,
         'frequency_penalty' => 0,
