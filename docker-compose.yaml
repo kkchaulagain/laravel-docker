@@ -8,3 +8,10 @@ services:
       - ./:/var/www/html
     ports:
       - "2060:80"
+  auth:
+    image: kkchaulagain/kyc_auth
+    container_name: kyc_auth
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "2061:80"
