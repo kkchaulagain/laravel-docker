@@ -1,0 +1,10 @@
+version: "2.4"
+
+services:
+  gateway:
+    image: kkchaulagain/kyc_gateway
+    container_name: kyc_gateway
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "2060:80"

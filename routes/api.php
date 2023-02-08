@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\BuildController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RequirementController;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -19,19 +16,10 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 |
 */
 
-Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
-    return $request->user();
-});
+
 // prefix v1
 Route::prefix("v1")->group(function () {
     Route::get("/requirement", RequirementController::class . "@generateRequirement");
-    Route::get("/schema", RequirementController::class . "@generateSchema");
-
-    Route::get("projects/{id}", ProjectController::class . "@select");
-    Route::resource("projects", ProjectController::class);
-    Route::post("projects/{id}/build", ProjectController::class . "@generateRequirement");
-    Route::post("projects/{id}/schema", ProjectController::class . "@generateSchema");
-    Route::resource("builds", BuildController::class);
 });
 
 Route::get("/test/error", function () {
