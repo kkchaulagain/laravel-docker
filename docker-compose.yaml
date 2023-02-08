@@ -8,10 +8,38 @@ services:
       - ./:/var/www/html
     ports:
       - "2060:80"
+    networks:
+      - kyc
   auth:
     image: kkchaulagain/kyc_auth
     container_name: kyc_auth
     volumes:
-      - ./:/var/www/html
+      - ./../kyc_auth:/var/www/html
     ports:
       - "2061:80"
+    networks:
+      - kyc
+  mongo:
+    image: mongo
+    hostname: mongo
+    container_name: kyc_mongo
+    ports:
+      - "27010:27017"
+    volumes:
+      - .mongodb:/data/db
+    networks:
+      - kyc
+  db:
+    image: mysql:8
+    hostname: db
+    container_name: kyc_db
+    volumes:
+      - .mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mauFJcuf5dhRMQrjj
+      MYSQL_DATABASE: authorization
+    networks:
+      - kyc
+networks:
+  kyc:
+    driver: bridge
