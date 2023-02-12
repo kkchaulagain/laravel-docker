@@ -13,4 +13,9 @@ class Application extends Model
     {
         return $this->belongsTo(Account::class);
     }
+
+    public function basicInfo()
+    {
+        return $this->hasOne(BasicInfo::class);
+    }
 }

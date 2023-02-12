@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\BasicInfoController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -34,6 +35,15 @@ Route::prefix("v1")->group(function () {
         Route::post("/", [ApplicationController::class, "store"]);
         Route::put("/{id}", [ApplicationController::class, "update"]);
         Route::delete("/{id}", [ApplicationController::class, "destroy"]);
+    });
+
+    // prefix basic-info
+    Route::prefix("basic-infos")->group(function () {
+        Route::get("/", [BasicInfoController::class, "index"]);
+        Route::get("/{id}", [BasicInfoController::class, "show"]);
+        Route::post("/", [BasicInfoController::class, "store"]);
+        Route::put("/{id}", [BasicInfoController::class, "update"]);
+        Route::delete("/{id}", [BasicInfoController::class, "destroy"]);
     });
 });
 
