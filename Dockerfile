@@ -1,7 +1,6 @@
 # docker/Dockerfile
 FROM php:8.1-fpm
 
-ARG APCU_VERSION=5.1.22
 
 # Get frequently used tools
 RUN apt-get update && apt-get install -y \
@@ -40,7 +39,6 @@ RUN docker-php-ext-install \
 RUN docker-php-ext-install sockets
 # apcu for caching, xdebug for debugging and also phpunit coverage
 RUN pecl install \
-    apcu-${APCU_VERSION} \
     mongodb \
     xdebug \
     && docker-php-ext-enable \
