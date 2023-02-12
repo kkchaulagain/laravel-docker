@@ -43,7 +43,6 @@ RUN pecl install \
     xdebug \
     && docker-php-ext-enable \
     mongodb \
-    apcu \
     xdebug
 
 # RUN docker-php-ext-install pdo pdo_mysql 
@@ -90,6 +89,7 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # Configure non-root user.
+
 ARG PUID=1001
 ENV PUID ${PUID}
 ARG PGID=1001
@@ -108,7 +108,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 # USER go
 RUN composer install --no-interaction --ignore-platform-reqs
 # RUN cp .env.production .env
-RUN chmod 777 -R /var/www/html/storage
+# RUN chmod 777 -R /var/www/html/storage
 
 
 EXPOSE 80 
