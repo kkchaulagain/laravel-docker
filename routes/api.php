@@ -3,6 +3,8 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BasicInfoController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -44,6 +46,24 @@ Route::prefix("v1")->group(function () {
         Route::post("/", [BasicInfoController::class, "store"]);
         Route::put("/{id}", [BasicInfoController::class, "update"]);
         Route::delete("/{id}", [BasicInfoController::class, "destroy"]);
+    });
+
+    // prefix document
+    Route::prefix("documents")->group(function () {
+        Route::get("/", [DocumentController::class, "index"]);
+        Route::get("/{id}", [DocumentController::class, "show"]);
+        Route::post("/", [DocumentController::class, "store"]);
+        Route::put("/{id}", [DocumentController::class, "update"]);
+        Route::delete("/{id}", [DocumentController::class, "destroy"]);
+    });
+
+    // prefix file
+    Route::prefix("files")->group(function () {
+        Route::get("/", [FileController::class, "index"]);
+        Route::get("/{id}", [FileController::class, "show"]);
+        Route::post("/", [FileController::class, "store"]);
+        Route::put("/{id}", [FileController::class, "update"]);
+        Route::delete("/{id}", [FileController::class, "destroy"]);
     });
 });
 
