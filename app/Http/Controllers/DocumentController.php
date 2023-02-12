@@ -38,6 +38,24 @@ class DocumentController extends BaseController
         }
     }
 
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        try {
+           
+            $project = $this->service->find($id,'files');
+            return $this->successResponse($project);
+        } catch (\Exception $e) {
+            return $this->handleError($e);
+        }
+    }
+    
+
     public function update(Request $request, $id)
     {
         try {

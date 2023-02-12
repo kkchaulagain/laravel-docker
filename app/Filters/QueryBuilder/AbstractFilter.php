@@ -57,4 +57,10 @@ abstract class AbstractFilter
     {
         return $this->request;
     }
+
+    public function with($val)
+    {
+        $explode = explode(',', $val);
+        $this->builder->with($explode);
+    }
 }

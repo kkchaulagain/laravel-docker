@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Application\DocumentService;
+use App\Services\Application\FileService;
 
 class FileController extends BaseController
 {
 
     public $service;
 
-    public function __construct(DocumentService $service)
+    public function __construct(FileService $service)
     {
         parent::__construct($service);
     }

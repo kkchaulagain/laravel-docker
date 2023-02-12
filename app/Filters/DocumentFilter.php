@@ -26,4 +26,7 @@ class DocumentFilter extends AbstractFilter
     {
         $this->builder->where('type', "$val");
     }
+
+
+  
 }
