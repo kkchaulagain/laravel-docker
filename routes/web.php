@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/", function () {
-    return "KYC GATEWAY";
+    return "KYC Account";
 });
 
 Route::get("/test", function () {
